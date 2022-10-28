@@ -1,9 +1,10 @@
 import { Action, createReducer, PayloadAction } from "@reduxjs/toolkit";
-import { authFailed, authRequest, authSuccess, createAuthReaderError, createAuthReaderRequest, createAuthReaderSuccess } from "./actions";
+import { authFailed, authRequest, authSuccess, createAuthReaderError, createAuthReaderRequest, createAuthReaderSuccess, logout } from "./actions";
 import { AddReaderError, AddReaderSuccess, AuthError, AuthState, AuthSuccess } from "./types";
 
 const initialState: AuthState = {
     loading: false,
+    isNeedToRedirect: false
 }
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -31,7 +32,13 @@ const authReducer = createReducer(initialState, (builder) => {
             state.loading = false;
             state.error = action.payload;
         })
-        .addDefaultCase((state: AuthState, action: Action<unknown>) => {})
+        .addCase(logout, (state: AuthState, action: PayloadAction) => {
+            state.isNeedToRedirect = false;
+            state.token = undefined;
+        })
+        .addDefaultCase((state: AuthState, action: Action<unknown>) => {
+            state.isNeedToRedirect = false;
+        })
 });
 
 export default authReducer;

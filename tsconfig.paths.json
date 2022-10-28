@@ -1,11 +1,17 @@
 {
     "compilerOptions": {
-        "jsxImportSource": "@emotion/react",
-        "baseUrl": ".",
+        "baseUrl": "./src",
         "paths": {
-            "@/*": [
-                "./src/*"
-            ]
+            "@/components": ["components"],
+            "@/components/*": ["components/*"],
+            "@/modules": ["modules"],
+            "@/modules/*": ["modules/*"],
+            "@/utils": ["utils"],
+            "@/utils/*": ["utils/*"],
+            "@/appTypes": ["types"],
+            "@/appTypes/*": ["types/*"],
+            "@/constants": ["constants"],
+            "@/constants/*": ["constants/*"]
         }
     }
 }

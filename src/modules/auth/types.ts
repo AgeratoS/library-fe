@@ -1,5 +1,3 @@
-import { boolean } from "yup";
-
 export type AuthData = {
     email: string;
     password: string;
@@ -62,6 +60,7 @@ export type RegisterBoxProps = LoginFormProps;
 
 export type AuthState = {
     token?: string;
+    isNeedToRedirect: boolean;
     loading: boolean;
     error?: AuthError | null;
 }

@@ -10,3 +10,7 @@ export type ApiCall<T, P> = (params: P) => Promise<ApiResponse<T>>;
 export type SafeRenderType = {
     data?: unknown
 }
+
+export type Identifyable<T> = T | {
+    id: number;
+}

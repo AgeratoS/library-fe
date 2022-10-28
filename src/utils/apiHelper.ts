@@ -1,4 +1,4 @@
-import { ApiError } from "@/types";
+import { ApiError } from "@/appTypes";
 
 class ApiHelper {
     static post<T>(url: RequestInfo | URL, init?: RequestInit) {

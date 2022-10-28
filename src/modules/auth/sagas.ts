@@ -1,10 +1,10 @@
 import { all, call, delay, fork, put, takeLatest } from "redux-saga/effects";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ApiResponse } from "@/types";
-import { AUTH, authFailed, authRequest, authSuccess, createAuthReaderError, createAuthReaderRequest, createAuthReaderSuccess } from "./actions";
+import { ApiResponse } from "@/appTypes";
+import { AUTH, authFailed, authRequest, authSuccess, createAuthReaderError, createAuthReaderRequest, createAuthReaderSuccess, logout, redirectToCreateAuthForm } from "./actions";
 import { AuthData, AuthSuccess, AuthError, AddReaderFormData, AddReaderSuccess, AddReaderError } from "./types";
 import AuthApi from "./api/AuthApi";
-import { isError } from "../../utils";
+import { isError } from "@/utils";
 
 
 const authApi = new AuthApi();
@@ -51,6 +51,7 @@ function* sagaAuthRegisterError(action: PayloadAction<AuthError>) {
 function* sagaAuthRegisterSuccess(action: PayloadAction<AuthSuccess>) {
     yield delay(4000);
     yield put(action);
+    yield put(redirectToCreateAuthForm());
 }
 
 // Create reader part
@@ -75,6 +76,10 @@ function* sagaCreateReaderFailed(action: PayloadAction<AddReaderError>) {
     yield put(action);
 }
 
+function* sagaLogout(action: PayloadAction) {
+    yield put(logout());
+}
+
 function* watchAuthRequest() {
     yield takeLatest(AUTH.FETCH, sagaAuthRequest);
 }
@@ -87,11 +92,16 @@ function* watchAddReaderRequest() {
     yield takeLatest(AUTH.CREATE_READER, sagaCreateReaderRequest);
 }
 
+function* watchLogout() {
+    yield takeLatest(AUTH.LOGOUT_REQUEST, sagaLogout)
+}
+
 
 export default function* rootSaga() {
     yield all([
         fork(watchAuthRequest),
         fork(watchAuthRegisterRequest),
-        fork(watchAddReaderRequest)
+        fork(watchAddReaderRequest),
+        fork(watchLogout)
     ]);
 }

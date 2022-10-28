@@ -1,5 +1,5 @@
-import { ApiCall } from "../../../types";
-import { ApiHelper } from "../../../utils";
+import { ApiCall } from "@/appTypes";
+import { ApiHelper } from "@/utils";
 import { AddReaderFormData, AuthData } from "../types";
 
 type Token = string;

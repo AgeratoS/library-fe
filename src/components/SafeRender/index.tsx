@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { SafeRenderType } from "@/types";
+import { SafeRenderType } from "@/appTypes";
 
 function SafeRender(props: PropsWithChildren<SafeRenderType>) {
     return <>

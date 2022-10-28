@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "../../utils";
+import { RootState } from "@/utils";
 
 const authState = (state: RootState) => state.auth;
 
