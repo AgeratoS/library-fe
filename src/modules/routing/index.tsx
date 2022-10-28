@@ -1,8 +1,8 @@
 import { BrowserRouter as Root, Navigate, Route, Routes } from "react-router-dom";
-import AuthRequired from "./containers/AuthRequiredRoute";
+import { pages as homePages } from "@/modules/home";
+import { pages as profilePages } from "@/modules/profile";
 import RouterPath from './routing';
-import AuthPage from "./containers/AuthPage";
-import { DashboardPage } from "../home/pages";
+import { AuthPage, AuthRequiredRoute as AuthRequired } from "./containers";
 
 
 function Router() {
@@ -11,8 +11,9 @@ function Router() {
             <Routes>
                 <Route path={RouterPath.AUTH} element={<AuthPage />} />
                 <Route path={RouterPath.HOME} element={<AuthRequired />}>
-                    <Route path={RouterPath.PROFILE} element={<DashboardPage />} />
-                    <Route path={RouterPath.HOME} element={<Navigate to={RouterPath.PROFILE} />} />
+                    <Route path={RouterPath.DASHBOARD} element={<homePages.DashboardPage />} />
+                    <Route path={RouterPath.PROFILE} element={<profilePages.ProfilePage />} />
+                    <Route path={RouterPath.HOME} element={<Navigate to={RouterPath.DASHBOARD} />} />
                 </Route>
             </Routes>
         </Root>

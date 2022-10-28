@@ -1,3 +1,4 @@
 import * as types from './types';
+import * as pages from './pages';
 
-export { types };
+export { types, pages };
