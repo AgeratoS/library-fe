@@ -1,5 +1,6 @@
+import { ReaderData } from "@/modules/profile/types";
 import { createAction } from "@reduxjs/toolkit";
-import { AddReaderError, AddReaderFormData, AddReaderSuccess, AuthData, AuthError, AuthSuccess } from "../types";
+import { AddReaderError, AddReaderSuccess, AuthData, AuthError, AuthSuccess } from "../types";
 
 const AUTH = {
     FETCH: 'auth/fetch',
@@ -24,7 +25,7 @@ const authFailed = createAction<AuthError>(AUTH.ERROR);
 const authRegister = createAction<AuthData>(AUTH.REGISTER);
 const authRequest = createAction(AUTH.REQUEST);
 
-const createAuthReader = createAction<AddReaderFormData>(AUTH.CREATE_READER);
+const createAuthReader = createAction<ReaderData>(AUTH.CREATE_READER);
 const createAuthReaderRequest = createAction(AUTH.CREATE_READER_REQUEST);
 const createAuthReaderSuccess = createAction<AddReaderSuccess>(AUTH.CREATE_READER_SUCCESS);
 const createAuthReaderError = createAction<AddReaderError>(AUTH.CREATE_READER_ERROR);

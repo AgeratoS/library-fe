@@ -1,3 +1,4 @@
 import ProfilePage from "./ProfilePage";
+import SettingsPage from "./SettingsPage";
 
-export { ProfilePage }
+export { ProfilePage, SettingsPage }

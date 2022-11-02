@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
+import { ReaderData } from "@/modules/profile/types";
 import { createAuthReader } from "../../actions";
 import AddReaderForm from "../../components/AddReaderForm";
-import { AddReaderFormData } from "../../types";
 import { authLoading } from "../../selectors";
 
 function AddReaderFormContainer() {
@@ -13,7 +13,7 @@ function AddReaderFormContainer() {
     return (
         <AddReaderForm
             isLoading={isLoading}
-            onSubmit={(values: AddReaderFormData) => dispatch(createAuthReader(values))}
+            onSubmit={(values: ReaderData) => dispatch(createAuthReader(values))}
         />
     );
 }

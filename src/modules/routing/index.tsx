@@ -13,6 +13,7 @@ function Router() {
                 <Route path={RouterPath.HOME} element={<AuthRequired />}>
                     <Route path={RouterPath.DASHBOARD} element={<homePages.DashboardPage />} />
                     <Route path={RouterPath.PROFILE} element={<profilePages.ProfilePage />} />
+                    <Route path={RouterPath.READER_SETTINGS} element={<profilePages.SettingsPage />} />
                     <Route path={RouterPath.HOME} element={<Navigate to={RouterPath.DASHBOARD} />} />
                 </Route>
             </Routes>

@@ -3,4 +3,8 @@ import actions from './actions';
 import reducers from './reducers';
 import sagas from './sagas';
 
-export {actions, reducers, sagas, types};
+import components from './components';
+import containers from './containers';
+import pages from './pages';
+
+export { actions, reducers, sagas, types, components, containers, pages };

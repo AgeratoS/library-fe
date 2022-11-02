@@ -1,3 +1,5 @@
+import { ReaderData } from "../profile/types";
+
 export type AuthData = {
     email: string;
     password: string;
@@ -21,14 +23,6 @@ export enum Gender {
     MALE = 'м', FEMALE = 'ж'
 }
 
-export type AddReaderFormData = {
-    firstName: string;
-    lastName: string;
-    middleName?: string;
-    gender: Gender;
-    age: number;
-}
-
 export type AddReaderSuccess = {};
 
 export type AddReaderError = {
@@ -49,9 +43,10 @@ export type LoginFormProps = {
 }
 
 export type AddReaderFormProps = {
-    initial?: AddReaderFormData;
-    onSubmit: (data: AddReaderFormData) => void;
+    initial?: ReaderData;
+    onSubmit: (data: ReaderData) => void;
     isLoading?: boolean;
+    buttonText?: string;
 }
 
 export type LoginBoxProps = LoginFormProps;

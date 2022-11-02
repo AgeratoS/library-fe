@@ -21,3 +21,14 @@ export type Profile = {
 export type ProfileState = {
     profile?: Profile
 }
+
+export type ReaderInfoFormProps = {
+    onSubmit: (vales: Partial<ReaderData>) => void;
+    initial: ReaderData;
+}
+
+export type ReaderFormBaseProps = {
+    onSubmit: (values: ReaderData) => void;
+    initial: ReaderData;
+    buttonText?: string;
+}

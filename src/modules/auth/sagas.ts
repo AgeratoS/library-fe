@@ -2,9 +2,10 @@ import { all, call, delay, fork, put, takeLatest } from "redux-saga/effects";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { ApiResponse } from "@/appTypes";
 import { AUTH, authFailed, authRequest, authSuccess, createAuthReaderError, createAuthReaderRequest, createAuthReaderSuccess, logout, redirectToCreateAuthForm } from "./actions";
-import { AuthData, AuthSuccess, AuthError, AddReaderFormData, AddReaderSuccess, AddReaderError } from "./types";
+import { AuthData, AuthSuccess, AuthError, AddReaderSuccess, AddReaderError } from "./types";
 import AuthApi from "./api/AuthApi";
 import { isError } from "@/utils";
+import { ReaderData } from "../profile/types";
 
 
 const authApi = new AuthApi();
@@ -55,7 +56,7 @@ function* sagaAuthRegisterSuccess(action: PayloadAction<AuthSuccess>) {
 }
 
 // Create reader part
-function* sagaCreateReaderRequest(action: PayloadAction<AddReaderFormData>) {
+function* sagaCreateReaderRequest(action: PayloadAction<ReaderData>) {
     yield put(createAuthReaderRequest());
     const { payload } = action;
     const result: ApiResponse<AddReaderSuccess> = yield call(authApi.createReader, payload);
