@@ -1,9 +1,11 @@
 import { AppBar, Container, Toolbar } from "@mui/material";
 import { PropsWithChildren } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logoutRequest } from "@/modules/auth/actions";
+import RoutePath from "@/modules/routing/routing";
 import AccountButton from "../AccountButton";
 import Logo from "../Logo";
-import { logoutRequest } from "../../modules/auth/actions";
 
 function AuthenticatedPage(props: PropsWithChildren) {
     
@@ -11,12 +13,18 @@ function AuthenticatedPage(props: PropsWithChildren) {
 
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     const onLogout = () => {
         dispatch(logoutRequest());
     }
 
     const onNavigateToProfile = () => {
-        console.log("Hello!");
+        navigate(RoutePath.PROFILE);
+    }
+
+    const onNavigateToDashboard = () => {
+        navigate(RoutePath.DASHBOARD);
     }
     
     return (
@@ -27,6 +35,7 @@ function AuthenticatedPage(props: PropsWithChildren) {
                     <AccountButton
                         onLogout={onLogout}
                         onNavigateToProfile={onNavigateToProfile}
+                        onNavigateToDashboard={onNavigateToDashboard}
                     />
                 </Toolbar>
             </AppBar>

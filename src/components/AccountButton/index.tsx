@@ -1,9 +1,9 @@
 import { AccountCircle } from "@mui/icons-material";
-import { IconButton, Menu, MenuItem } from "@mui/material";
+import { Divider, IconButton, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import type { AccountButtonProps } from "../types";
 
-function AccountButton({ onLogout, onNavigateToProfile }: AccountButtonProps) {
+function AccountButton({ onLogout, onNavigateToProfile, onNavigateToDashboard }: AccountButtonProps) {
     
     const [ anchor, setAnchor ] = useState<null | HTMLElement>(null);
     const open = Boolean(anchor);
@@ -32,6 +32,8 @@ function AccountButton({ onLogout, onNavigateToProfile }: AccountButtonProps) {
                 open={open}
                 onClose={() => handleClose()}
             >
+                <MenuItem onClick={() => handleClose(onNavigateToDashboard)}>My dashboard</MenuItem>
+                <Divider />
                 <MenuItem onClick={() => handleClose(onNavigateToProfile)}>My profile</MenuItem>
                 <MenuItem onClick={() => handleClose(onLogout)}>Logout</MenuItem>
             </Menu>
