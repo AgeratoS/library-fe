@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { AuthenticatedPage } from "@/components";
 import { DashboardBooks } from "../../components";
 
@@ -6,7 +6,7 @@ function DashboardPage() {
     
     return (
         <AuthenticatedPage>
-            <Typography variant='h3'>Dashboard</Typography>
+            <Typography variant='h2'>Dashboard</Typography>
             <DashboardBooks 
                 title="Books taken by you recently"
                 caption="Read with pleasure!"

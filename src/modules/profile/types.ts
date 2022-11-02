@@ -32,3 +32,7 @@ export type ReaderFormBaseProps = {
     initial: ReaderData;
     buttonText?: string;
 }
+
+export type ReaderInfoProps = {
+    reader: ReaderData;
+}
