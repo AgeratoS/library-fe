@@ -1,6 +1,6 @@
 import { AuthenticatedPage } from "@/components";
+import { ReaderInfoFormContainer } from "@/modules/reader/containers";
 import { Typography } from "@mui/material";
-import ReaderInfoFormContainer from "../../containers/ReaderInfoFormContainer";
 
 function SettingsPage() {
     

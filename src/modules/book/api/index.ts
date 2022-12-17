@@ -1,8 +1,7 @@
 import { ApiCall } from "@/appTypes";
+import { ReaderId } from "@/modules/reader/types";
 import { ApiHelper } from "@/utils";
 import { Book } from "../types";
-
-export type ReaderId = number;
 
 interface IBookApi {
     getTakenBooks: ApiCall<Book[], ReaderId>,

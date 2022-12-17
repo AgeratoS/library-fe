@@ -1,5 +1,7 @@
+import { Reader } from "../reader/types";
+
 export enum Gender {
-    MALE = 'м', FEMALE = 'ж'
+    MALE, FEMALE
 }
 
 export type ReaderData = {
@@ -30,13 +32,13 @@ export type ReaderInfoFormProps = {
 }
 
 export type ReaderFormBaseProps = {
-    onSubmit: (values: ReaderData) => void;
+    onSubmit: (values: Reader) => void;
     initial: ReaderData;
     buttonText?: string;
 }
 
 export type ReaderInfoProps = {
-    reader: ReaderData;
+    reader: Reader;
 }
 
 export type GenderProps = {

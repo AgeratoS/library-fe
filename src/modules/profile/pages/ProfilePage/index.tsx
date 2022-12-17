@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { AuthenticatedPage } from "@/components";
-import ReaderInfoContainer from "../../containers/ReaderInfoContainer";
+import ReaderInfoContainer from "../../../reader/containers/ReaderInfoContainer";
 import { useNavigate } from "react-router-dom";
 import RoutePath from "@/modules/routing/routing";
 

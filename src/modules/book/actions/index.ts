@@ -1,5 +1,5 @@
+import { ReaderId } from "@/modules/reader/types";
 import { createAction } from "@reduxjs/toolkit";
-import { ReaderId } from "../api"
 import { Book } from "../types";
 
 const BOOK = {

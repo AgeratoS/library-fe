@@ -13,3 +13,29 @@ export type Reader = {
     age: number;
     preferredGenres?: Array<Identifyable<types.Genre>>;
 }
+
+export type ReaderId = number;
+
+export type ReaderInfoProps = {
+    reader: Reader;
+}
+
+export type GenderProps = {
+    gender: Gender;
+}
+
+export type ReaderInfoFormProps = {
+    onSubmit: (vales: Partial<Reader>) => void;
+    initial: Reader;
+}
+
+export type ReaderFormBaseProps = {
+    onSubmit: (values: Reader) => void;
+    initial: Reader;
+    buttonText?: string;
+}
+
+export type UpdateReaderParams = {
+    readerId: ReaderId,
+    updateData: Omit<Partial<Reader>, 'books'>
+}

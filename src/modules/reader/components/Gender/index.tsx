@@ -1,5 +1,5 @@
 import { Male, Female } from "@mui/icons-material";
-import { GenderProps, Gender as GenderEnum } from "../../types";
+import { GenderProps, Gender as GenderEnum } from "../../../profile/types";
 
 
 function Gender(props: GenderProps) {

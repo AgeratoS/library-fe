@@ -2,8 +2,9 @@ import { ApiError } from "@/appTypes";
 import { isError } from "@/utils";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { all, call, fork, put, takeLatest } from "redux-saga/effects";
+import { ReaderId } from "../reader/types";
 import { takenBooksRequest, takenBooksSuccess, urgentBooksRequest, urgentBooksSuccess } from "./actions";
-import BookApi, { ReaderId } from "./api";
+import BookApi from "./api";
 import { Book } from "./types";
 
 const bookApi = new BookApi();

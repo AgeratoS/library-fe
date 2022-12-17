@@ -1,7 +1,7 @@
 import { Box, Button, FormControl, FormGroup, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material";
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import { Gender, ReaderFormBaseProps } from "../../types";
+import { Gender, ReaderFormBaseProps } from "../../../profile/types";
 
 function ReaderFormBase(props: ReaderFormBaseProps) {
     
@@ -22,7 +22,7 @@ function ReaderFormBase(props: ReaderFormBaseProps) {
             age: Yup.number().required()
                 .min(10)
                 .max(90),
-            gender: Yup.mixed().oneOf(['м', 'ж'])
+            gender: Yup.mixed().oneOf([0, 1])
         }),
         onSubmit
     });

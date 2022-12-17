@@ -1,4 +1,4 @@
-import ReaderFormBase from "@/modules/profile/components/ReaderFormBase";
+import ReaderFormBase from "@/modules/reader/components/ReaderFormBase";
 import { Gender } from "@/modules/profile/types";
 import { AddReaderFormProps } from "../../types";
 
