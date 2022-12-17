@@ -10,8 +10,8 @@ export type AuthSuccess = {
 }
 
 export type AuthError = {
-    description: string;
-    code: number;
+    message: string;
+    statusCode: number;
 }
 
 export type AuthFormData = {
@@ -19,15 +19,11 @@ export type AuthFormData = {
     password: string;
 }
 
-export enum Gender {
-    MALE = 'м', FEMALE = 'ж'
-}
-
 export type AddReaderSuccess = {};
 
 export type AddReaderError = {
-    description: string;
-    code: number;
+    message: string;
+    statusCode: number;
 }
 
 export enum LoginFormMode {

@@ -1,4 +1,6 @@
-import { Gender } from "@/modules/auth/types";
+export enum Gender {
+    MALE = 'м', FEMALE = 'ж'
+}
 
 export type ReaderData = {
     firstName: string;
@@ -35,4 +37,8 @@ export type ReaderFormBaseProps = {
 
 export type ReaderInfoProps = {
     reader: ReaderData;
+}
+
+export type GenderProps = {
+    gender: Gender;
 }

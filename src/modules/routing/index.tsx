@@ -1,8 +1,8 @@
-import { BrowserRouter as Root, Navigate, Route, Routes } from "react-router-dom";
 import { pages as homePages } from "@/modules/home";
 import { pages as profilePages } from "@/modules/profile";
-import RouterPath from './routing';
+import { BrowserRouter as Root, Navigate, Route, Routes } from "react-router-dom";
 import { AuthPage, AuthRequiredRoute as AuthRequired } from "./containers";
+import RouterPath from './routing';
 
 
 function Router() {

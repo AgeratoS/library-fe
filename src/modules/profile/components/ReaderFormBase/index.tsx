@@ -1,8 +1,7 @@
 import { Box, Button, FormControl, FormGroup, FormHelperText, Input, InputLabel, MenuItem, Select } from "@mui/material";
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import { ReaderFormBaseProps } from "../../types";
-import { Gender } from "../../../auth/types";
+import { Gender, ReaderFormBaseProps } from "../../types";
 
 function ReaderFormBase(props: ReaderFormBaseProps) {
     

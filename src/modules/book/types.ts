@@ -9,7 +9,7 @@ export type Book = {
     year: number;
     publisher: string;
     isbn?: string;
-    quantity?: number;
+    author: string;
     genres?: Array<Identifyable<types.Genre>>
 }
 

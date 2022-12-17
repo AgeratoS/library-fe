@@ -1,5 +1,6 @@
 import ReaderFormBase from "@/modules/profile/components/ReaderFormBase";
-import { AddReaderFormProps, Gender } from "../../types";
+import { Gender } from "@/modules/profile/types";
+import { AddReaderFormProps } from "../../types";
 
 function AddReaderForm(props: AddReaderFormProps) {
 

@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { SafeRender } from "@/components";
 import { ReaderInfoProps } from "../../types";
+import Gender from "../Gender";
 
 function ReaderInfo(props: ReaderInfoProps) {
     
@@ -23,7 +24,7 @@ function ReaderInfo(props: ReaderInfoProps) {
                 <Typography variant={"subtitle2"}>Age: {reader.age}</Typography>
             </Box>
             <Box mb={2}>
-                <Typography variant={"subtitle2"}>Gender: {reader.gender}</Typography>
+                <Gender gender={reader.gender} />
             </Box>
         </>
     );

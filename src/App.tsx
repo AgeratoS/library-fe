@@ -5,8 +5,8 @@ import { theme } from './constants';
 import Router from './modules/routing';
 import { persistor, store } from './utils';
 
-import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 
 
 function App() {

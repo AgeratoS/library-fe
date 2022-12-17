@@ -1,8 +1,8 @@
-import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { AddReaderPage, AuthPage as InnerAuth } from "@/modules/auth/pages";
-import { isNeedToRedirect, token } from "../../selectors";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import RoutePath from '../../routing';
+import { isNeedToRedirect, token } from "../../selectors";
 
 function AuthPage() {
     

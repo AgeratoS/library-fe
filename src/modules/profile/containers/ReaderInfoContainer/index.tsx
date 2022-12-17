@@ -1,7 +1,7 @@
-import { Gender } from "@/modules/auth/types";
 import { useSelector } from "react-redux";
 import ReaderInfo from "../../components/ReaderInfo";
 import selectors from "../../selectors";
+import { Gender } from "../../types";
 
 function ReaderInfoContainer() {
     

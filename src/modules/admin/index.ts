@@ -1,7 +1,7 @@
-import * as types from './types';
 import actions from './actions';
 import reducers from './reducers';
 import sagas from './sagas';
+import * as types from './types';
 
 import components from './components';
 import containers from './containers';

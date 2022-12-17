@@ -9,6 +9,8 @@ function Book({book}: BookProps) {
             <SafeRender data={book.isbn}>
                 <p>ISBN: {book.isbn}</p>
             </SafeRender>
+            <p>Издательство {book.publisher}</p>
+            <p>Автор {book.author}</p>
         </div>
     );
 }

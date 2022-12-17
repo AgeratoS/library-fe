@@ -19,7 +19,7 @@ interface AuthApi {
 
 export default class Api implements AuthApi {
     register(auth: AuthData) {
-        return ApiHelper.post<Token>(`${process.env.REACT_APP_BE_BASE}/profiles/`, {
+        return ApiHelper.post<Token>(`${process.env.REACT_APP_BE_BASE}/profile/`, {
             body: JSON.stringify(auth)
         });
     }
@@ -30,7 +30,7 @@ export default class Api implements AuthApi {
         })
     }
     findProfile(auth: AuthData) {
-        return ApiHelper.get<Profile>(`${process.env.REACT_APP_BE_BASE}/profiles`, auth);
+        return ApiHelper.get<Profile>(`${process.env.REACT_APP_BE_BASE}/profile/findProfile`, auth);
     }
 
     createReader(readerData: ReaderData) {
