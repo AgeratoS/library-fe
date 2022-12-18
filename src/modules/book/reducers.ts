@@ -1,15 +1,21 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { takenBooksSuccess, urgentBooksSuccess } from "./actions";
+import { allLibrarySuccess, takenBooksSuccess, urgentBooksSuccess } from "./actions";
 import { Book } from "./types";
 
 type BookState = {
     takenBooks: Book[],
-    urgentBooks: Book[]
+    urgentBooks: Book[],
+    library: {
+        books: Book[]
+    }
 }
 
 const initialState: BookState = {
     takenBooks: [],
-    urgentBooks: []
+    urgentBooks: [],
+    library: {
+        books: []
+    }
 }
 
 export default createReducer(initialState, (builder) => {
@@ -19,5 +25,8 @@ export default createReducer(initialState, (builder) => {
         })
         .addCase(urgentBooksSuccess, (state, action) => {
             state.urgentBooks = action.payload;
+        })
+        .addCase(allLibrarySuccess, (state, action) => {
+            state.library.books = action.payload
         });
 });

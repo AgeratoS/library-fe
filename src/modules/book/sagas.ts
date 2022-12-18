@@ -3,7 +3,7 @@ import { isError } from "@/utils";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { all, call, fork, put, takeLatest } from "redux-saga/effects";
 import { ReaderId } from "../reader/types";
-import { takenBooksRequest, takenBooksSuccess, urgentBooksRequest, urgentBooksSuccess } from "./actions";
+import { allLibraryError, allLibraryRequest, rentBookRequest, takenBooksError, takenBooksRequest, takenBooksSuccess, urgentBooksError, urgentBooksRequest, urgentBooksSuccess } from "./actions";
 import BookApi from "./api";
 import { Book } from "./types";
 
@@ -15,12 +15,13 @@ function* loadTakenBooks(action: PayloadAction<ReaderId>) {
     try {
         const books: Book[] | ApiError = yield call(bookApi.getTakenBooks, payload);
         if (isError(books)) {
-            console.error("Произошла ошибка запроса")
+            console.error("Произошла ошибка запроса");
+            yield put(takenBooksError());
         } else {
-            yield put(takenBooksSuccess(books as Book[]))
+            yield put(takenBooksSuccess(books as Book[]));
         }
     } catch (e) {
-        console.error("Произошла ошибка при запросе")
+        yield put(takenBooksError())
     }
 }
 
@@ -31,12 +32,32 @@ function* loadUrgentBooks(action: PayloadAction<ReaderId>) {
         const books: Book[] | ApiError = yield call(bookApi.getUrgentBooks, payload);
         if (isError(books)) {
             console.error("Произошла ошибка запроса");
-            
+            yield put(urgentBooksError());
         } else {
             yield put(urgentBooksSuccess(books as Book[]))
         }
     } catch (e) {
-        console.error("Произошла ошибка при запросе");   
+        yield put(urgentBooksError())
+    }
+}
+
+function* patchRentBook(action: PayloadAction) {
+    const { payload } = action;
+
+    try {
+
+    } catch (e) {
+        yield put(urgentBooksError());
+    }
+}
+
+function* loadAllLibrary(action: PayloadAction) {
+    const { payload } = action;
+
+    try {
+
+    } catch (e) {
+        yield put(allLibraryError());
     }
 }
 
@@ -46,6 +67,14 @@ function* watchTakenBooksRequest() {
 
 function* watchUrgentBooksRequest() {
     yield takeLatest(urgentBooksRequest.type, loadUrgentBooks);
+}
+
+function* watchRentBookRequest() {
+    yield takeLatest(rentBookRequest.type, patchRentBook);
+}
+
+function* watchAllLibraryRequest() {
+    yield takeLatest(allLibraryRequest.type, loadAllLibrary)
 }
 
 export default function* () {
