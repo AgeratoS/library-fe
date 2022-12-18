@@ -10,7 +10,7 @@ export type Book = {
     publisher: string;
     isbn?: string;
     author: string;
-    genres?: Array<Identifyable<types.Genre>>
+    genres?: Array<types.Genre>
 }
 
 export type BooksListProps = PropsWithChildren<{
