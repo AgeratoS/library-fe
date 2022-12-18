@@ -1,6 +1,6 @@
 import { ApiCall } from "@/appTypes";
 import { ReaderData } from "@/modules/profile/types";
-import { ApiHelper } from "@/utils";
+import { ApiHelper } from "@/modules/utils";
 import { AuthData } from "../types";
 
 type Token = string;

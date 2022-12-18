@@ -4,7 +4,7 @@ import { ApiResponse } from "@/appTypes";
 import { AUTH, authFailed, authRequest, authSuccess, createAuthReaderError, createAuthReaderRequest, createAuthReaderSuccess, logout, redirectToCreateAuthForm } from "./actions";
 import { AuthData, AuthSuccess, AuthError, AddReaderSuccess, AddReaderError } from "./types";
 import AuthApi from "./api/AuthApi";
-import { isError } from "@/utils";
+import { isError } from "@/modules/utils";
 import { ReaderData } from "../profile/types";
 
 

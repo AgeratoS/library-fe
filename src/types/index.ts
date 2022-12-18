@@ -14,3 +14,9 @@ export type SafeRenderType = {
 export type Identifyable<T> = T | {
     id: number;
 }
+
+export type FilterRequest = {
+    start: number;
+    offset: number;
+    total: number;
+}

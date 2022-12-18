@@ -1,5 +1,5 @@
 import { ApiError } from "@/appTypes";
-import { isError } from "@/utils";
+import { isError } from "@/modules/utils";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { all, call, fork, put, takeLatest } from "redux-saga/effects";
 import { getReaderRequest, getReaderSuccess, updateReaderRequest, updateReaderSuccess } from "./actions";
@@ -16,11 +16,11 @@ function* getReader(action: PayloadAction<ReaderId>) {
 
         if (isError(result)) {
             console.error("Произошла ошибка при получении данных");
-            
+
         } else {
             yield put(getReaderSuccess(result as Reader));
         }
-    } catch(e) {
+    } catch (e) {
         console.error("Произошла ошибка при получении данных");
     }
 }
@@ -34,7 +34,6 @@ function* updateReader(action: PayloadAction<UpdateReaderParams>) {
         if (isError(result)) {
 
         } else {
-            console.log('Успешно обновлено!')
             yield put(updateReaderSuccess(result as Reader))
         }
     } catch (e) {
@@ -50,7 +49,7 @@ function* watchUpdateReaderRequest() {
     yield takeLatest(updateReaderRequest.type, updateReader);
 }
 
-export default function*() {
+export default function* () {
     yield all([
         fork(watchGetReaderRequest),
         fork(watchUpdateReaderRequest)

@@ -1,3 +1,4 @@
+import { FilterRequest } from "@/appTypes";
 import { createReducer } from "@reduxjs/toolkit"
 import { allLibrarySuccess, takenBooksSuccess, urgentBooksSuccess } from "./actions";
 import { Book } from "./types";
@@ -6,7 +7,8 @@ type BookState = {
     takenBooks: Book[],
     urgentBooks: Book[],
     library: {
-        books: Book[]
+        books: Book[],
+        filter?: FilterRequest
     }
 }
 

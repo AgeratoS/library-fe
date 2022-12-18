@@ -8,6 +8,7 @@ function AuthPage() {
     
     const _isNeedToRedirect = useSelector(isNeedToRedirect)
     const _token = useSelector(token);
+    
     if (_token) {
         return <Navigate to={RoutePath.HOME} />
     }

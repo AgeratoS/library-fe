@@ -1,11 +1,13 @@
 import { ApiCall } from "@/appTypes";
 import { ReaderId } from "@/modules/reader/types";
-import { ApiHelper } from "@/utils";
+import { ApiHelper } from "@/modules/utils";
 import { Book } from "../types";
 
 interface IBookApi {
     getTakenBooks: ApiCall<Book[], ReaderId>,
-    getUrgentBooks: ApiCall<Book[], ReaderId>
+    getUrgentBooks: ApiCall<Book[], ReaderId>,
+
+    getLibrary: ApiCall<Book[], never>
 }
 
 class BookApi implements IBookApi {
@@ -18,6 +20,10 @@ class BookApi implements IBookApi {
         return ApiHelper.get<Book[]>(`${process.env.REACT_APP_BE_BASE}/readers/${readerId}/books`, {
             readerId: readerId.toString()
         })
+    }
+
+    getLibrary() {
+        return ApiHelper.get<Book[]>(`${process.env.REACT_APP_BE_BASE}/books`);
     }
 }
 

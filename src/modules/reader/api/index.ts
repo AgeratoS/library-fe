@@ -1,5 +1,5 @@
 import { ApiCall } from "@/appTypes";
-import { ApiHelper } from "@/utils";
+import { ApiHelper } from "@/modules/utils";
 import { Reader, ReaderId, UpdateReaderParams } from "../types";
 
 interface IReaderApi {

@@ -1,11 +1,11 @@
 import { AppBar, Container, Toolbar } from "@mui/material";
 import { PropsWithChildren } from "react";
-import { Logo } from "..";
+import Logo from "../Logo";
 
 function SimplePage(props: PropsWithChildren) {
-    
+
     const { children } = props;
-    
+
     return (
         <div>
             <AppBar position="static" color="transparent" elevation={0}>
@@ -14,7 +14,7 @@ function SimplePage(props: PropsWithChildren) {
                 </Toolbar>
             </AppBar>
             <Container>
-                { children }
+                {children}
             </Container>
         </div>
     );

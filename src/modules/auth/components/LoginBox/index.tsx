@@ -1,9 +1,10 @@
 import { Grid } from "@mui/material";
-import { AuthForm, HeroText } from "..";
+import AuthForm from "../AuthForm";
+import HeroText from "../HeroText";
 import { LoginBoxProps } from "../../types";
 
 function LoginBox(props: LoginBoxProps) {
-    
+
     return (
         <Grid container spacing={2} alignItems='center'>
             <Grid item xs={5}>
@@ -13,8 +14,8 @@ function LoginBox(props: LoginBoxProps) {
                 <AuthForm
                     isLoading={props.isLoading}
                     mode={props.mode}
-                    onChangeMode={props.onChangeMode} 
-                    onSubmit={props.onSubmit} 
+                    onChangeMode={props.onChangeMode}
+                    onSubmit={props.onSubmit}
                     initial={props.initial}
                 />
             </Grid>

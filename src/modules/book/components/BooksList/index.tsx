@@ -3,13 +3,13 @@ import BookComponent from "../Book";
 import { BooksListProps } from "../../types";
 
 function BooksList(props: BooksListProps) {
-    
+
     const { children, books } = props;
-    
+
     return (
         <Slider>
             {books.map(book => (
-                <BookComponent book={book}/>
+                <BookComponent book={book} key={book.isbn} />
             ))}
         </Slider>
     );

@@ -8,7 +8,7 @@ import AccountButton from "../AccountButton";
 import Logo from "../Logo";
 
 function AuthenticatedPage(props: PropsWithChildren) {
-    
+
     const { children } = props;
 
     const dispatch = useDispatch();
@@ -26,7 +26,11 @@ function AuthenticatedPage(props: PropsWithChildren) {
     const onNavigateToDashboard = () => {
         navigate(RoutePath.DASHBOARD);
     }
-    
+
+    const onNavigateToBooks = () => {
+        navigate(RoutePath.LIBRARY);
+    }
+
     return (
         <div>
             <AppBar position="static" color="transparent" elevation={0}>
@@ -36,11 +40,12 @@ function AuthenticatedPage(props: PropsWithChildren) {
                         onLogout={onLogout}
                         onNavigateToProfile={onNavigateToProfile}
                         onNavigateToDashboard={onNavigateToDashboard}
+                        onNavigateToBooks={onNavigateToBooks}
                     />
                 </Toolbar>
             </AppBar>
             <Container>
-                { children }
+                {children}
             </Container>
         </div>
     );
