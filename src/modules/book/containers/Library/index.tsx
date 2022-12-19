@@ -30,7 +30,7 @@ function Library() {
 
     return (
         <>
-            {books.map((book) => <Book book={book} actions={<>
+            {books.map((book) => <Book book={book} key={book.isbn} actions={<>
                 <Button onClick={() => onRentBook(book)}>Add book</Button>
             </>} />)}
         </>

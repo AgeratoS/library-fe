@@ -36,6 +36,7 @@ function RentForm() {
                 <DatePicker
                     value={endDate}
                     inputFormat="DD/MM/YYYY"
+                    minDate={dayjs().toDate()}
                     onChange={onChangeDate}
                     renderInput={(props) => <TextField {...props} />}
                 />

@@ -1,11 +1,12 @@
 import { AuthenticatedPage } from "@/components";
+import { Typography } from "@mui/material";
 import { RentForm } from "../../containers";
 
 function RentBook() {
 
     return (
         <AuthenticatedPage>
-            <p>Page of rent of book</p>
+            <Typography variant='h2'>Rent this book</Typography>
             <RentForm />
         </AuthenticatedPage>
     );
