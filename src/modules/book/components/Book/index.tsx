@@ -2,7 +2,7 @@ import { SafeRender } from "@/components";
 import { GenresList } from "@/modules/genre/components";
 import { BookProps } from "../../types";
 
-function Book({ book }: BookProps) {
+function Book({ book, actions }: BookProps) {
     return (
         <div>
             <p>Наименование: {book.title}</p>
@@ -16,6 +16,7 @@ function Book({ book }: BookProps) {
                 <p>Жанры: </p>
                 <GenresList genres={book.genres ?? []} />
             </div>
+            {actions}
         </div>
     );
 }

@@ -19,6 +19,7 @@ function Router() {
                     <Route path={RouterPath.READER_SETTINGS} element={<profilePages.SettingsPage />} />
 
                     <Route path={RouterPath.LIBRARY} element={<bookPages.LibraryPage />} />
+                    <Route path={RouterPath.RENT} element={<bookPages.RentBook />}/>
                     <Route path={RouterPath.HOME} element={<Navigate to={RouterPath.DASHBOARD} />} />
                 </Route>
             </Routes>

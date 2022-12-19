@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import React, { PropsWithChildren, ReactNode } from "react";
 import { Identifyable } from "@/appTypes";
 import { types } from "../genre";
 
@@ -18,5 +18,6 @@ export type BooksListProps = PropsWithChildren<{
 }>
 
 export type BookProps = {
-    book: Book
+    book: Book;
+    actions?: ReactNode
 }
