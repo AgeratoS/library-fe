@@ -3,7 +3,7 @@ import { isError } from "@/modules/utils";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { all, call, fork, put, takeLatest } from "redux-saga/effects";
 import { ReaderId } from "../reader/types";
-import { allLibraryError, allLibraryRequest, allLibrarySuccess, rentBookRequest, takenBooksError, takenBooksRequest, takenBooksSuccess, urgentBooksError, urgentBooksRequest, urgentBooksSuccess } from "./actions";
+import { allLibraryError, allLibraryRequest, allLibrarySuccess, createBookError, createBookRequest, createBookSuccess, deleteBookError, deleteBookRequest, deleteBookSuccess, rentBookRequest, takenBooksError, takenBooksRequest, takenBooksSuccess, updateBookError, updateBookRequest, updateBookSuccess, urgentBooksError, urgentBooksRequest, urgentBooksSuccess } from "./actions";
 import BookApi from "./api";
 import { Book } from "./types";
 
@@ -67,6 +67,54 @@ function* loadAllLibrary(action: PayloadAction) {
     }
 }
 
+function* createBook(action: PayloadAction<Book>) {
+    const { payload } = action;
+
+    try {
+        const result: boolean | ApiError = yield call(bookApi.createBook, payload);
+
+        if (isError(result) || !result) {
+            yield put(createBookError());
+        } else {
+            yield put(createBookSuccess(payload));
+        }
+    } catch (e) {
+        yield put(createBookError());
+    }
+}
+
+function* updateBook(action: PayloadAction<Book>) {
+    const { payload } = action;
+
+    try {
+        const result: boolean | ApiError = yield call(bookApi.updateBook, payload);
+
+        if (isError(result) || !result) {
+            yield put(updateBookError());
+        } else {
+            yield put(updateBookSuccess(payload));
+        }
+    } catch (e) {
+        yield put(updateBookError());
+    }
+}
+
+function* deleteBook(action: PayloadAction<Book>) {
+    const { payload } = action;
+
+    try {
+        const result: boolean | ApiError = yield call(bookApi.removeBook, payload);
+
+        if (isError(result) || !result) {
+            yield put(deleteBookError());
+        } else {
+            yield put(deleteBookSuccess(payload));
+        }
+    } catch (e) {
+        yield put(deleteBookError());
+    }
+}
+
 function* watchTakenBooksRequest() {
     yield takeLatest(takenBooksRequest.type, loadTakenBooks);
 }
@@ -83,11 +131,26 @@ function* watchAllLibraryRequest() {
     yield takeLatest(allLibraryRequest.type, loadAllLibrary)
 }
 
+function* watchBookCreateRequest() {
+    yield takeLatest(createBookRequest.type, createBook);
+}
+
+function* watchBookUpdateRequest() {
+    yield takeLatest(updateBookRequest.type, updateBook);
+}
+
+function* watchBookDeleteRequest() {
+    yield takeLatest(deleteBookRequest.type, deleteBook);
+}
+
 export default function* () {
     yield all([
         fork(watchTakenBooksRequest),
         fork(watchUrgentBooksRequest),
         fork(watchRentBookRequest),
-        fork(watchAllLibraryRequest)
+        fork(watchAllLibraryRequest),
+        fork(watchBookCreateRequest),
+        fork(watchBookUpdateRequest),
+        fork(watchBookDeleteRequest)
     ])
 }

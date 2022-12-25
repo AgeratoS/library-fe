@@ -10,21 +10,15 @@ function ReaderInfoFormContainer() {
 
     const dispatch = useDispatch();
     const _reader = useSelector(reader);
-    
+
     return (
         <>
-            <ReaderInfoForm 
+            <ReaderInfoForm
                 onSubmit={(reader) => dispatch(updateReaderRequest({
                     readerId: 1,
                     updateData: reader
                 }))}
-                initial={_reader ?? {
-                    age: 0,
-                    firstName: '',
-                    lastName: '',
-                    middleName: '',
-                    gender: Gender.MALE
-                }}
+                initial={_reader!}
             />
         </>
     );

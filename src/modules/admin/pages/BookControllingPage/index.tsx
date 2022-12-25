@@ -1,10 +1,11 @@
 import { AdminPage } from "@/components";
+import { CrudBooks } from "@/modules/book/containers";
 
 function BookControllingPage() {
 
     return (
         <AdminPage>
-            <p>Book controlling page</p>
+            <CrudBooks />
         </AdminPage>
     );
 }

@@ -7,7 +7,10 @@ interface IBookApi {
     getTakenBooks: ApiCall<Book[], ReaderId>,
     getUrgentBooks: ApiCall<Book[], ReaderId>,
 
-    getLibrary: ApiCall<Book[], never>
+    getLibrary: ApiCall<Book[], never>,
+    createBook: ApiCall<boolean, Book>,
+    updateBook: ApiCall<boolean, Book>,
+    removeBook: ApiCall<boolean, Book>
 }
 
 class BookApi implements IBookApi {
@@ -24,6 +27,24 @@ class BookApi implements IBookApi {
 
     getLibrary() {
         return ApiHelper.get<Book[]>(`${process.env.REACT_APP_BE_BASE}/books`);
+    }
+
+    createBook(book: Book) {
+        return ApiHelper.post<boolean>(`${process.env.REACT_APP_BE_BASE}/books`, {
+            body: JSON.stringify(book)
+        });
+    }
+
+    updateBook(book: Book) {
+        return ApiHelper.patch<boolean>(`${process.env.REACT_APP_BE_BASE}/books/${book.id}`, {
+            body: JSON.stringify(book)
+        });
+    }
+
+    removeBook(book: Book) {
+        return ApiHelper.delete<boolean>(`${process.env.REACT_APP_BE_BASE}/books/${book.id}`, {
+            body: JSON.stringify(book)
+        })
     }
 }
 

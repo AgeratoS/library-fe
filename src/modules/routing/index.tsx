@@ -26,6 +26,8 @@ function Router() {
                 </Route>
                 <Route path={RouterPath.ADMIN_CONTEXT.BASE} element={<AdminRequired />}>
                     <Route path={RouterPath.ADMIN_CONTEXT.BOOK_CONTROLLING} element={<adminPages.BookControllingPage />} />
+                    <Route path={RouterPath.ADMIN_CONTEXT.BOOK_EDIT} element={<bookPages.EditBookPage />} />
+                    <Route path={RouterPath.ADMIN_CONTEXT.BOOK_CREATE} element={<bookPages.AddBookPage />} />
                     <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_CONTROLLING} element={<adminPages.ProfileControllingPage />} />
                 </Route>
             </Routes>

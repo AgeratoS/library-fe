@@ -12,7 +12,14 @@ class Router {
     static ADMIN_CONTEXT = {
         BASE: "/admin",
         BOOK_CONTROLLING: "/admin/book_controlling",
-        PROFILE_CONTROLLING: "/admin/profile_controlling"
+        BOOK_EDIT: '/admin/crud/book_controlling/edit',
+        BOOK_CREATE: '/admin/crud/book_controlling/create',
+        BOOK_DELETE: '/admin/crud/book_controlling/delete',
+
+        PROFILE_CONTROLLING: "/admin/profile_controlling",
+        PROFILE_EDIT: '/admin/crud/profile_controlling/edit',
+        PROFILE_CREATE: '/admin/crud/profile_controlling/create',
+        PROFILE_DELETE: '/admin/crud/profile_controlling/delete'
     }
 }
 

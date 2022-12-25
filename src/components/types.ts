@@ -1,3 +1,5 @@
+import { SelectProps } from "@mui/material";
+import { ReactNode } from "react";
 
 // Тип, отвечающий над кнопкой аккаунта на странице
 export type AccountButtonProps = {
@@ -18,4 +20,10 @@ export type AdminAccountButtonProps = {
 // Тип, отвечающий за логотип
 export type LogoTypes = {
     isAdmin?: boolean;
+}
+
+export type Selector = {
+    label: string;
+    value: string | number;
+    id: string | number;
 }

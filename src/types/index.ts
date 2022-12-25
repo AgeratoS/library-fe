@@ -20,3 +20,5 @@ export type FilterRequest = {
     offset: number;
     total: number;
 }
+
+export type FormEntity<T extends {id: number}> = Omit<T, 'id'>

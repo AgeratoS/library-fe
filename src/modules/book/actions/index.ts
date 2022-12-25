@@ -1,6 +1,6 @@
 import { ReaderId } from "@/modules/reader/types";
 import { createAction } from "@reduxjs/toolkit";
-import { Book } from "../types";
+import { Book, EntityFormBook } from "../types";
 
 const BOOK = {
     TAKEN_BOOKS: {
@@ -22,6 +22,23 @@ const BOOK = {
         request: 'books/allLibrary/request',
         complete: 'books/allLibrary/success',
         error: 'books/allLibrary/error'
+    },
+    CRUD_BOOKS: {
+        create: {
+            request: 'books/crudBooks/create/request',
+            complete: 'books/crudBooks/create/success',
+            error: 'books/crudBooks/create/error'
+        },
+        update: {
+            request: 'books/crudBooks/update/request',
+            complete: 'books/crudBooks/update/success',
+            error: 'books/crudBooks/update/error'
+        },
+        delete: {
+            request: 'books/crudBooks/delete/request',
+            complete: 'books/crudBooks/delete/success',
+            error: 'books/crudBooks/delete/error'
+        }
     }
 }
 
@@ -42,3 +59,15 @@ export const rentBookError = createAction(BOOK.RENT_BOOK.error);
 export const allLibraryRequest = createAction(BOOK.ALL_LIBRARY.request);
 export const allLibrarySuccess = createAction<Book[]>(BOOK.ALL_LIBRARY.complete);
 export const allLibraryError = createAction(BOOK.ALL_LIBRARY.error);
+
+export const createBookRequest = createAction<EntityFormBook>(BOOK.CRUD_BOOKS.create.request);
+export const createBookSuccess = createAction<Book>(BOOK.CRUD_BOOKS.create.complete);
+export const createBookError = createAction(BOOK.CRUD_BOOKS.create.error);
+
+export const updateBookRequest = createAction<Book>(BOOK.CRUD_BOOKS.update.request);
+export const updateBookSuccess = createAction<Book>(BOOK.CRUD_BOOKS.update.complete);
+export const updateBookError = createAction(BOOK.CRUD_BOOKS.update.error);
+
+export const deleteBookRequest = createAction<Book>(BOOK.CRUD_BOOKS.delete.request);
+export const deleteBookSuccess = createAction<Book>(BOOK.CRUD_BOOKS.delete.complete);
+export const deleteBookError = createAction(BOOK.CRUD_BOOKS.delete.error);

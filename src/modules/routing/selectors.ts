@@ -8,4 +8,4 @@ export const token = createSelector(authState, (state) => state.token);
 export const isNeedToRedirect = createSelector(authState, (state) => state.isNeedToRedirect);
 
 // TODO: Реализовать поиск роли в состоянии
-export const role = createSelector(authState, (state) => types.Role.READER);
+export const role = createSelector(authState, (state) => types.Role.ADMIN);

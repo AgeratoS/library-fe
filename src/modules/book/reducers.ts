@@ -1,6 +1,6 @@
 import { FilterRequest } from "@/appTypes";
 import { createReducer } from "@reduxjs/toolkit"
-import { allLibrarySuccess, takenBooksSuccess, urgentBooksSuccess } from "./actions";
+import { allLibrarySuccess, createBookSuccess, deleteBookSuccess, takenBooksSuccess, updateBookSuccess, urgentBooksSuccess } from "./actions";
 import { Book } from "./types";
 
 type BookState = {
@@ -30,5 +30,19 @@ export default createReducer(initialState, (builder) => {
         })
         .addCase(allLibrarySuccess, (state, action) => {
             state.library.books = action.payload
-        });
+        })
+        .addCase(createBookSuccess, (state, action) => {
+            state.library.books.push(action.payload);
+        })
+        .addCase(updateBookSuccess, (state, action) => {
+            state.library.books = state.library.books.map((book) => {
+                if (book.id === action.payload.id) {
+                    return action.payload;
+                }
+                return book;
+            });
+        })
+        .addCase(deleteBookSuccess, (state, action) => {
+            state.library.books = state.library.books.filter((book) => book.id !== action.payload.id);
+        })
 });
