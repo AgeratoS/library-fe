@@ -1,3 +1,6 @@
+import { FormEntity } from "@/appTypes";
+import { SelectChangeEvent } from "@mui/material";
+import { ReactNode } from "react";
 import { Reader } from "../reader/types";
 
 export enum Gender {
@@ -13,17 +16,21 @@ export type ReaderData = {
 }
 
 export enum Role {
-    READER, ADMIN
+    READER = 'Reader', ADMIN = 'Admin'
 };
 
 export type Profile = {
+    id: number;
     email: string;
+    password: string;
     role: Role;
-    reader: ReaderData;
+    readers?: ReaderData[];
 };
 
 export type ProfileState = {
-    profile?: Profile
+    profile?: Profile;
+    profiles?: Profile[];
+    isLoading: boolean;
 }
 
 export type ReaderInfoFormProps = {
@@ -43,4 +50,45 @@ export type ReaderInfoProps = {
 
 export type GenderProps = {
     gender: Gender;
+}
+
+export type ProfilesTableProps = {
+    profiles: Profile[],
+    onEdit?: (profile: Profile) => void;
+    onRemove?: (profile: Profile) => void;
+    onRead?: (profile: Profile) => void;
+}
+
+export type EditProfileButtonProps = {
+    profile: Profile
+}
+
+export type RemoveProfileButtonProps = {
+    profile: Profile
+}
+
+export type ProfileEntity = FormEntity<Profile>
+
+export type ProfileFormBaseProps = {
+    initial?: ProfileEntity;
+    onSubmit: (values: ProfileEntity) => void;
+    buttonText?: string;
+}
+
+export type RoleSelectorProps = {
+    roles: Role[],
+    selected: Role,
+    onChange: (event: SelectChangeEvent<Role>, child?: ReactNode) => void;
+}
+
+export type RoleSelectorContainerProps = {
+    selected: Role;
+    onChange: (role: Role) => void;
+}
+
+export type ReadersTableProps = {
+    readers: Reader[],
+    onEdit?: (reader: Reader) => void;
+    onRemove?: (reader: Reader) => void;
+    onAddBook?: (reader: Reader) => void;
 }

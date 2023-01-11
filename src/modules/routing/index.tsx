@@ -28,7 +28,11 @@ function Router() {
                     <Route path={RouterPath.ADMIN_CONTEXT.BOOK_CONTROLLING} element={<adminPages.BookControllingPage />} />
                     <Route path={RouterPath.ADMIN_CONTEXT.BOOK_EDIT} element={<bookPages.EditBookPage />} />
                     <Route path={RouterPath.ADMIN_CONTEXT.BOOK_CREATE} element={<bookPages.AddBookPage />} />
+
                     <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_CONTROLLING} element={<adminPages.ProfileControllingPage />} />
+                    <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_CREATE} element={<profilePages.CreateProfilePage />} />
+                    <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_READERS} element={<profilePages.ReadProfilePage />} />
+                    <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_EDIT} element={<profilePages.EditProfilePage />} />
                 </Route>
             </Routes>
         </Root>

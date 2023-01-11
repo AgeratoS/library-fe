@@ -1,11 +1,12 @@
 import { AdminPage } from "@/components";
+import { CreateProfileButton, ProfilesTableContainer } from "@/modules/profile/containers";
 
 function ProfileControllingPage() {
 
-
     return (
         <AdminPage>
-            <p>Profile controlling page</p>
+            <CreateProfileButton />
+            <ProfilesTableContainer />
         </AdminPage>
     );
 }

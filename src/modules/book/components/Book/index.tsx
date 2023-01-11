@@ -12,10 +12,7 @@ function Book({ book, actions }: BookProps) {
             </SafeRender>
             <p>Издательство {book.publisher}</p>
             <p>Автор {book.author}</p>
-            <div>
-                <p>Жанры: </p>
-                <GenresList genres={book.genres ?? []} />
-            </div>
+            <GenresList genres={book.genres ?? []} />
             {actions}
         </div>
     );

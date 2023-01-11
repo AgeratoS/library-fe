@@ -1,6 +1,6 @@
 import { GenreSelectorContainer } from "@/modules/genre/containers";
 import { Box, FormGroup, FormControl, InputLabel, Input, FormHelperText, TextareaAutosize, Button } from "@mui/material";
-import { Field, FieldConfig, FieldProps, useFormik } from "formik";
+import { useFormik } from "formik";
 import { BookFormBaseProps } from "../../types";
 
 function BookFormBase(props: BookFormBaseProps) {

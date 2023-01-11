@@ -19,6 +19,7 @@ class Router {
         PROFILE_CONTROLLING: "/admin/profile_controlling",
         PROFILE_EDIT: '/admin/crud/profile_controlling/edit',
         PROFILE_CREATE: '/admin/crud/profile_controlling/create',
+        PROFILE_READERS: '/admin/crud/profile_controlling/readers',
         PROFILE_DELETE: '/admin/crud/profile_controlling/delete'
     }
 }

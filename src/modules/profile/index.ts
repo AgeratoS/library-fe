@@ -1,6 +1,6 @@
 import * as types from './types';
 import * as pages from './pages';
-import actions from './actions';
+import * as actions from './actions';
 import reducers from './reducers';
 import selectors from './selectors';
 import sagas from './sagas';

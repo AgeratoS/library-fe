@@ -4,7 +4,8 @@ import { ProfileState, Role } from "./types";
 
 const profileState = (state: RootState) => state.profile;
 
-const reader = createSelector(profileState, (state: ProfileState) => state.profile?.reader);
+const readers = createSelector(profileState, (state: ProfileState) => state.profile?.readers);
 const role = createSelector(profileState, (state: ProfileState) => state.profile?.role);
+const profiles = createSelector(profileState, (state) => state.profiles);
 
-export default { reader, role }
+export default { readers, role, profiles }
