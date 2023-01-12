@@ -1,5 +1,5 @@
 import { ApiCall } from "@/appTypes";
-import { ReaderData } from "@/modules/profile/types";
+import { LinkReaderToProfileParams, ReaderData } from "@/modules/profile/types";
 import { ApiHelper } from "@/modules/utils";
 import { AuthData } from "../types";
 
@@ -13,7 +13,7 @@ interface AuthApi {
     register: ApiCall<Token, AuthData>;
     login: ApiCall<Token, AuthData>;
     findProfile: ApiCall<Profile, AuthData>;
-    createReader: ApiCall<boolean, ReaderData>;
+    createReader: ApiCall<boolean, LinkReaderToProfileParams>;
 }
 
 
@@ -33,8 +33,8 @@ export default class Api implements AuthApi {
         return ApiHelper.get<Profile>(`${process.env.REACT_APP_BE_BASE}/profile/findProfile`, auth);
     }
 
-    createReader(readerData: ReaderData) {
-        return ApiHelper.post<boolean>(`${process.env.REACT_APP_BE_BASE}/linkReaderToProfile`, {
+    createReader(readerData: LinkReaderToProfileParams) {
+        return ApiHelper.post<boolean>(`${process.env.REACT_APP_BE_BASE}/readers/linkReaderToProfile`, {
             body: JSON.stringify(readerData)
         });
     }

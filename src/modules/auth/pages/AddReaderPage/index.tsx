@@ -5,7 +5,6 @@ import { AddReaderForm } from "../../containers";
 
 function AddReaderPage() {
     
-    
     return (
         <SimplePage>
             <Grid container alignItems={'center'}>

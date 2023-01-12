@@ -1,4 +1,4 @@
-import { ReaderData } from "../profile/types";
+import { Profile, ReaderData } from "../profile/types";
 
 export type AuthData = {
     email: string;
@@ -7,6 +7,7 @@ export type AuthData = {
 
 export type AuthSuccess = {
     token: string;
+    profile?: Profile
 }
 
 export type AuthError = {
@@ -54,4 +55,6 @@ export type AuthState = {
     isNeedToRedirect: boolean;
     loading: boolean;
     error?: AuthError | null;
+    authDataForLink?: AuthData;
 }
+

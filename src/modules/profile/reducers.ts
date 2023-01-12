@@ -1,4 +1,5 @@
 import { AnyAction, createReducer } from "@reduxjs/toolkit";
+import { authSuccess, logout } from "../auth/actions";
 import { loadProfiles, loadProfilesError, loadProfilesSuccess, removeProfileSuccess, updateProfileSuccess } from "./actions";
 import { ProfileState } from "./types";
 
@@ -10,6 +11,12 @@ const initialState: ProfileState = {
 
 const profileReducer = createReducer<ProfileState>(initialState, (builder) => {
     builder
+        .addCase(authSuccess, (state, action) => {
+            state.profile = action.payload.profile
+        })
+        .addCase(logout, (state, action) => {
+            state.profile = undefined;
+        })
         .addCase(loadProfiles, (state, action) => {
             state.isLoading = true;
         })
@@ -34,7 +41,7 @@ const profileReducer = createReducer<ProfileState>(initialState, (builder) => {
             })
         })
         .addDefaultCase((state: ProfileState, action: AnyAction) => {
-            
+
         })
 });
 

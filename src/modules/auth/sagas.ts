@@ -5,7 +5,7 @@ import { AUTH, authFailed, authRequest, authSuccess, createAuthReaderError, crea
 import { AuthData, AuthSuccess, AuthError, AddReaderSuccess, AddReaderError } from "./types";
 import AuthApi from "./api/AuthApi";
 import { isError } from "@/modules/utils";
-import { ReaderData } from "../profile/types";
+import { LinkReaderToProfileParams, ReaderData } from "../profile/types";
 
 
 const authApi = new AuthApi();
@@ -24,12 +24,12 @@ function* sagaAuthRequest(action: PayloadAction<AuthData>) {
 }
 
 function* sagaAuthSuccess(action: PayloadAction<AuthSuccess>) {
-    yield delay(4000);
+    yield delay(2000);
     yield put(action);
 }
 
 function* sagaAuthError(action: PayloadAction<AuthError>) {
-    yield delay(4000);
+    yield delay(2000);
     yield put(action);
 }
 
@@ -40,23 +40,23 @@ function* sagaAuthRegisterRequest(action: PayloadAction<AuthData>) {
     if (isError(result)) {
         yield* sagaAuthRegisterError(authFailed(result as AuthError))
     } else {
-        yield* sagaAuthRegisterSuccess(authSuccess(result as AuthSuccess))
+        yield* sagaAuthRegisterSuccess(authSuccess(result as AuthSuccess));
+        yield put(redirectToCreateAuthForm(payload));
     }
 }
 
 function* sagaAuthRegisterError(action: PayloadAction<AuthError>) {
-    yield delay(4000);
+    yield delay(2000);
     yield put(action);
 }
 
 function* sagaAuthRegisterSuccess(action: PayloadAction<AuthSuccess>) {
-    yield delay(4000);
+    yield delay(2000);
     yield put(action);
-    yield put(redirectToCreateAuthForm());
 }
 
 // Create reader part
-function* sagaCreateReaderRequest(action: PayloadAction<ReaderData>) {
+function* sagaCreateReaderRequest(action: PayloadAction<LinkReaderToProfileParams>) {
     yield put(createAuthReaderRequest());
     const { payload } = action;
     const result: ApiResponse<AddReaderSuccess> = yield call(authApi.createReader, payload);
@@ -68,12 +68,12 @@ function* sagaCreateReaderRequest(action: PayloadAction<ReaderData>) {
 }
 
 function* sagaCreateReaderSuccess(action: PayloadAction<AddReaderSuccess>) {
-    yield delay(4000);
+    yield delay(2000);
     yield put(action);
 }
 
 function* sagaCreateReaderFailed(action: PayloadAction<AddReaderError>) {
-    yield delay(4000);
+    yield delay(2000);
     yield put(action);
 }
 

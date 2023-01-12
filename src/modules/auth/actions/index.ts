@@ -1,4 +1,4 @@
-import { ReaderData } from "@/modules/profile/types";
+import { LinkReaderToProfileParams, ReaderData } from "@/modules/profile/types";
 import { createAction } from "@reduxjs/toolkit";
 import { AddReaderError, AddReaderSuccess, AuthData, AuthError, AuthSuccess } from "../types";
 
@@ -25,12 +25,12 @@ const authFailed = createAction<AuthError>(AUTH.ERROR);
 const authRegister = createAction<AuthData>(AUTH.REGISTER);
 const authRequest = createAction(AUTH.REQUEST);
 
-const createAuthReader = createAction<ReaderData>(AUTH.CREATE_READER);
+const createAuthReader = createAction<LinkReaderToProfileParams>(AUTH.CREATE_READER);
 const createAuthReaderRequest = createAction(AUTH.CREATE_READER_REQUEST);
 const createAuthReaderSuccess = createAction<AddReaderSuccess>(AUTH.CREATE_READER_SUCCESS);
 const createAuthReaderError = createAction<AddReaderError>(AUTH.CREATE_READER_ERROR);
 
-const redirectToCreateAuthForm = createAction(AUTH.NEED_REDIRECT);
+const redirectToCreateAuthForm = createAction<AuthData>(AUTH.NEED_REDIRECT);
 
 const logoutRequest = createAction(AUTH.LOGOUT_REQUEST);
 const logout = createAction(AUTH.LOGOUT);

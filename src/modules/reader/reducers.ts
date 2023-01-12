@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { logout } from "../auth/actions";
+import { authSuccess, logout } from "../auth/actions";
 import { getReaderSuccess, updateReaderSuccess } from "./actions";
 import { Reader } from "./types";
 
@@ -13,6 +13,9 @@ const initialState: ReaderState = {
 
 export default createReducer(initialState, (builder) => {
     builder
+        .addCase(authSuccess, (state, action) => {
+            state.reader = action.payload.profile?.readers?.[0];
+        })
         .addCase(getReaderSuccess, (state, action) => {
             state.reader = action.payload
         })

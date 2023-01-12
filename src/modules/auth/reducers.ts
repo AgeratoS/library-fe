@@ -1,43 +1,46 @@
-import { Action, createReducer, PayloadAction } from "@reduxjs/toolkit";
+import { Action, createReducer } from "@reduxjs/toolkit";
 import { authFailed, authRequest, authSuccess, createAuthReaderError, createAuthReaderRequest, createAuthReaderSuccess, logout, redirectToCreateAuthForm } from "./actions";
-import { AddReaderError, AddReaderSuccess, AuthError, AuthState, AuthSuccess } from "./types";
+import { AuthState } from "./types";
 
 const initialState: AuthState = {
     loading: false,
-    isNeedToRedirect: false
+    isNeedToRedirect: false,
 }
 
 const authReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(authRequest, (state: AuthState, action: PayloadAction) => {
+        .addCase(authRequest, (state, action) => {
             state.error = null;
             state.loading = true;
         })
-        .addCase(authSuccess, (state: AuthState, action: PayloadAction<AuthSuccess>) => {
+        .addCase(authSuccess, (state, action) => {
             state.loading = false;
             state.token = action.payload.token;
         })
-        .addCase(authFailed, (state: AuthState, action: PayloadAction<AuthError>) => {
+        .addCase(authFailed, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         })
-        .addCase(createAuthReaderRequest, (state: AuthState, action: PayloadAction) => {
+        .addCase(createAuthReaderRequest, (state, action) => {
             state.error = null;
             state.loading = true;
         })
-        .addCase(createAuthReaderSuccess, (state: AuthState, action: PayloadAction<AddReaderSuccess>) => {
+        .addCase(createAuthReaderSuccess, (state, action) => {
             state.loading = false;
+            state.authDataForLink = undefined;
         })
-        .addCase(createAuthReaderError, (state: AuthState, action: PayloadAction<AddReaderError>) => {
+        .addCase(createAuthReaderError, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         })
-        .addCase(logout, (state: AuthState, action: PayloadAction) => {
+        .addCase(logout, (state, action) => {
             state.isNeedToRedirect = false;
             state.token = undefined;
         })
-        .addCase(redirectToCreateAuthForm, (state: AuthState, action: PayloadAction) => {
+        .addCase(redirectToCreateAuthForm, (state, action) => {
             state.isNeedToRedirect = true;
+            state.authDataForLink = action.payload;
+
         })
         .addDefaultCase((state: AuthState, action: Action<unknown>) => {
             state.isNeedToRedirect = false;

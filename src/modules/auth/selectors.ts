@@ -6,5 +6,6 @@ const authState = (state: RootState) => state.auth;
 const authError = createSelector(authState, (state) => state.error);
 const authToken = createSelector(authState, (state) => state.token);
 const authLoading = createSelector(authState, (state) => state.loading);
+const authDataForLink = createSelector(authState, (state) => state.authDataForLink);
 
-export { authError, authToken, authLoading };
+export { authError, authToken, authLoading, authDataForLink };

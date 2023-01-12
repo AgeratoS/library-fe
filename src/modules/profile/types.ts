@@ -1,6 +1,7 @@
 import { FormEntity } from "@/appTypes";
 import { SelectChangeEvent } from "@mui/material";
 import { ReactNode } from "react";
+import { AuthData } from "../auth/types";
 import { Reader, ReaderEntity } from "../reader/types";
 
 export enum Gender {
@@ -13,6 +14,11 @@ export type ReaderData = {
     middleName?: string;
     gender: Gender;
     age: number;
+}
+
+export type LinkReaderToProfileParams = {
+    reader: ReaderData;
+    profile: AuthData;
 }
 
 export enum Role {
