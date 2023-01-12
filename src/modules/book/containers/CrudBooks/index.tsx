@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppDispatch } from "@/utils";
 import { allLibraryRequest } from "@/modules/book/actions";
-import { BooksList } from "@/modules/book/components";
+import { Book, BooksList } from "@/modules/book/components";
 import { allBooks } from "@/modules/book/selectors";
 import { IconButton } from "@mui/material";
 import EditBookButton from "../EditBookButton";
 import RemoveBookButton from "../RemoveBookButton";
-import { Book } from "../../types";
 import RouterPath from "@/modules/routing/routing";
 
 function CrudBooks() {
@@ -31,13 +30,10 @@ function CrudBooks() {
     return (
         <>
             <IconButton onClick={onCreate}>Add book</IconButton>
-            <BooksList
-                books={books}
-                action={(book: Book) => <div>
+            {books.map((book) => (<Book book={book} actions={<div>
                     <EditBookButton book={book} />
                     <RemoveBookButton book={book} />
-                </div>}
-            />
+                </div>}/>))}
         </>
     );
 }
