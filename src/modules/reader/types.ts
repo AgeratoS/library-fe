@@ -1,4 +1,5 @@
-import { Identifyable } from "@/appTypes";
+import { FormEntity, Identifyable } from "@/appTypes";
+import { Book } from "../book/types";
 import { types } from "../genre";
 
 export enum Gender {
@@ -11,8 +12,11 @@ export type Reader = {
     middleName?: string;
     gender: Gender;
     age: number;
-    preferredGenres?: Array<Identifyable<types.Genre>>;
+    id: ReaderId;
+    books: Book[];
 }
+
+export type ReaderEntity = FormEntity<Omit<Reader, 'books'>>;
 
 export type ReaderId = number;
 
@@ -25,17 +29,27 @@ export type GenderProps = {
 }
 
 export type ReaderInfoFormProps = {
-    onSubmit: (vales: Partial<Reader>) => void;
-    initial: Reader;
+    onSubmit: (vales: ReaderEntity) => void;
+    initial: ReaderEntity;
 }
 
 export type ReaderFormBaseProps = {
-    onSubmit: (values: Reader) => void;
-    initial: Reader;
+    onSubmit: (values: ReaderEntity) => void;
+    initial: ReaderEntity;
     buttonText?: string;
 }
 
 export type UpdateReaderParams = {
     readerId: ReaderId,
-    updateData: Omit<Partial<Reader>, 'books'>
+    updateData: ReaderEntity
+}
+
+export type UnlinkBookParams = {
+    book: Book,
+    reader: Reader
+}
+
+export type RentBookParams = {
+    reader: Reader,
+    book: Book
 }

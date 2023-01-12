@@ -1,6 +1,6 @@
-import { ReaderId } from "@/modules/reader/types";
+import { ReaderId, RentBookParams } from "@/modules/reader/types";
 import { createAction } from "@reduxjs/toolkit";
-import { Book, EntityFormBook } from "../types";
+import { Book, EntityFormBook, UnlinkBookActionParams } from "../types";
 
 const BOOK = {
     TAKEN_BOOKS: {
@@ -38,6 +38,11 @@ const BOOK = {
             request: 'books/crudBooks/delete/request',
             complete: 'books/crudBooks/delete/success',
             error: 'books/crudBooks/delete/error'
+        },
+        unlink: {
+            request: 'books/crudBooks/unlink/request',
+            complete: 'books/crudBooks/unlink/complete',
+            error: 'books/crudBooks/unlink/error'
         }
     }
 }
@@ -50,9 +55,7 @@ export const urgentBooksRequest = createAction<ReaderId>(BOOK.URGENT_BOOKS.reque
 export const urgentBooksSuccess = createAction<Book[]>(BOOK.URGENT_BOOKS.complete);
 export const urgentBooksError = createAction(BOOK.URGENT_BOOKS.error);
 
-
-// TODO: Додумать типы принимаемых экшнов
-export const rentBookRequest = createAction(BOOK.RENT_BOOK.request);
+export const rentBookRequest = createAction<RentBookParams>(BOOK.RENT_BOOK.request);
 export const rentBookSuccess = createAction(BOOK.RENT_BOOK.complete);
 export const rentBookError = createAction(BOOK.RENT_BOOK.error);
 
@@ -71,3 +74,7 @@ export const updateBookError = createAction(BOOK.CRUD_BOOKS.update.error);
 export const deleteBookRequest = createAction<Book>(BOOK.CRUD_BOOKS.delete.request);
 export const deleteBookSuccess = createAction<Book>(BOOK.CRUD_BOOKS.delete.complete);
 export const deleteBookError = createAction(BOOK.CRUD_BOOKS.delete.error);
+
+export const unlinkBookRequest = createAction<UnlinkBookActionParams>(BOOK.CRUD_BOOKS.unlink.request);
+export const unlinkBookSuccess = createAction<Book>(BOOK.CRUD_BOOKS.unlink.complete);
+export const unlinkBookError = createAction(BOOK.CRUD_BOOKS.unlink.error);

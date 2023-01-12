@@ -20,7 +20,12 @@ class Router {
         PROFILE_EDIT: '/admin/crud/profile_controlling/edit',
         PROFILE_CREATE: '/admin/crud/profile_controlling/create',
         PROFILE_READERS: '/admin/crud/profile_controlling/readers',
-        PROFILE_DELETE: '/admin/crud/profile_controlling/delete'
+        PROFILE_DELETE: '/admin/crud/profile_controlling/delete',
+
+        BOOK_READER_CONTROLLING: "/admin/book_reader_controlling",
+        BOOK_READER_ADD: "/admin/crud/book_reader_controlling/add",
+        BOOK_READER_RENT: "/admin/crud/book_reader_controlling/rent",
+        BOOK_READER_REMOVE: "/admin/crud/book_reader_controlling/remove"
     }
 }
 

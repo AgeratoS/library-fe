@@ -1,20 +1,25 @@
 import TakenBooks from "./TakenBooks";
 import UrgentBooks from "./UrgentBooks";
 import Library from "./Library";
-import RentForm from "./RentForm";
+import RentFormContainer from "./RentFormContainer";
 import CrudBooks from "./CrudBooks";
 import EditBookButton from "./EditBookButton";
 import RemoveBookButton from "./RemoveBookButton";
 import EditBookForm from "./EditBookForm";
 import AddBookForm from "./AddBookForm";
+import CrudBooksByReader from "./CrudBooksByReader";
+import AdminLibrary from "./AdminLibrary";
 
-export { TakenBooks, 
-    UrgentBooks, 
-    Library, 
-    RentForm, 
-    CrudBooks, 
-    EditBookButton, 
+export {
+    TakenBooks,
+    UrgentBooks,
+    Library,
+    RentFormContainer,
+    CrudBooks,
+    EditBookButton,
     RemoveBookButton,
     EditBookForm,
-    AddBookForm
+    AddBookForm,
+    CrudBooksByReader,
+    AdminLibrary
 }

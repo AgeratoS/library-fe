@@ -1,7 +1,7 @@
 import { FormEntity } from "@/appTypes";
 import { SelectChangeEvent } from "@mui/material";
 import { ReactNode } from "react";
-import { Reader } from "../reader/types";
+import { Reader, ReaderEntity } from "../reader/types";
 
 export enum Gender {
     MALE, FEMALE
@@ -24,7 +24,7 @@ export type Profile = {
     email: string;
     password: string;
     role: Role;
-    readers?: ReaderData[];
+    readers?: Reader[];
 };
 
 export type ProfileState = {
@@ -39,8 +39,8 @@ export type ReaderInfoFormProps = {
 }
 
 export type ReaderFormBaseProps = {
-    onSubmit: (values: Reader) => void;
-    initial: ReaderData;
+    onSubmit: (values: ReaderEntity) => void;
+    initial: ReaderEntity;
     buttonText?: string;
 }
 
@@ -90,5 +90,5 @@ export type ReadersTableProps = {
     readers: Reader[],
     onEdit?: (reader: Reader) => void;
     onRemove?: (reader: Reader) => void;
-    onAddBook?: (reader: Reader) => void;
+    onShowBooks?: (reader: Reader) => void;
 }

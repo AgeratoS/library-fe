@@ -7,6 +7,7 @@ import ProfilesTable from "../../components/ProfilesTable";
 import selectors from "../../selectors";
 import { Profile } from "../../types";
 import RouterPath from "@/modules/routing/routing";
+import { selectProfile } from "@/modules/admin/actions";
 
 function ProfilesTableContainer() {
 
@@ -31,9 +32,8 @@ function ProfilesTableContainer() {
     }
 
     const onReadProfile = (profile: Profile) => {
-        navigate(RouterPath.ADMIN_CONTEXT.PROFILE_READERS, {
-            state: profile
-        })
+        dispatch(selectProfile(profile));
+        navigate(RouterPath.ADMIN_CONTEXT.PROFILE_READERS);
     }
     
     

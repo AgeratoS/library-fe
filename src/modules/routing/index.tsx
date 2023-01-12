@@ -33,7 +33,11 @@ function Router() {
                     <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_CREATE} element={<profilePages.CreateProfilePage />} />
                     <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_READERS} element={<profilePages.ReadProfilePage />} />
                     <Route path={RouterPath.ADMIN_CONTEXT.PROFILE_EDIT} element={<profilePages.EditProfilePage />} />
-                </Route>
+
+                    <Route path={RouterPath.ADMIN_CONTEXT.BOOK_READER_CONTROLLING} element={<bookPages.BooksByReaderPage />} />
+                    <Route path={RouterPath.ADMIN_CONTEXT.BOOK_READER_ADD} element={<bookPages.AddBookToReaderPage />} />
+                    <Route path={RouterPath.ADMIN_CONTEXT.BOOK_READER_RENT} element={<bookPages.AdminRentBookPage />} />
+                 </Route>
             </Routes>
         </Root>
     );

@@ -20,6 +20,8 @@ function ReaderInfoContainer() {
     return (
         <>
             <ReaderInfo reader={_reader ?? {
+                id: -1,
+                books: [],
                 age: 0,
                 firstName: 'Anonym',
                 lastName: 'Anonym',

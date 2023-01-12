@@ -3,9 +3,9 @@ import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/m
 import Gender from "../Gender";
 
 function ReadersTable(props: ReadersTableProps) {
-    
-    const { readers, onEdit, onRemove, onAddBook } = props;
-    
+
+    const { readers, onEdit, onRemove, onShowBooks } = props;
+
     return (
         <Table>
             <TableHead>
@@ -19,15 +19,15 @@ function ReadersTable(props: ReadersTableProps) {
             </TableHead>
             <TableBody>
                 {readers.map((reader) => (
-                    <TableRow>
+                    <TableRow key={reader.id}>
                         <TableCell>{reader.firstName}</TableCell>
                         <TableCell>{reader.lastName}</TableCell>
                         <TableCell>{reader.middleName}</TableCell>
                         <TableCell>{reader.age}</TableCell>
-                        <TableCell><Gender gender={reader.gender}/></TableCell>
+                        <TableCell><Gender gender={reader.gender} /></TableCell>
                         {onEdit && <TableCell><Button onClick={() => onEdit(reader)}>Edit</Button></TableCell>}
                         {onRemove && <TableCell><Button onClick={() => onRemove(reader)}>Remove</Button></TableCell>}
-                        {onAddBook && <TableCell><Button onClick={() => onAddBook(reader)}>Link book</Button></TableCell>}
+                        {onShowBooks && <TableCell><Button onClick={() => onShowBooks(reader)}>Show books</Button></TableCell>}
                     </TableRow>
                 ))}
             </TableBody>
